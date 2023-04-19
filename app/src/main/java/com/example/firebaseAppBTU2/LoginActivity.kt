@@ -1,18 +1,19 @@
 package com.example.firebaseAppBTU2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginEmailEditText: EditText
-    private lateinit var loginPasswordEditText : EditText
+    private lateinit var loginEmailEditText :EditText
+    private lateinit var loginPasswordEditText :EditText
     private lateinit var loginButton : Button
     private lateinit var notRegisteredButton : TextView
     private lateinit var forgotPasswordButton : TextView
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
-                    TODO()
+                 startActivity(Intent(this,ProfileActivity::class.java))
                 } else {
                     Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -51,7 +52,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         forgotPasswordButton.setOnClickListener {
-            TODO()
+
+            startActivity(Intent(this,PasswordRecovery::class.java))
+
+
         }
     }
 
